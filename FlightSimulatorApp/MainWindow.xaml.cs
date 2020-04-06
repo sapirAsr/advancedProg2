@@ -1,4 +1,6 @@
-﻿using System;
+﻿using FlightSimulatorApp.ViewModels;
+using FlightSimulatorApp.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -21,12 +23,15 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        VMDashboard vmDash;
         public MainWindow()
         {
             InitializeComponent();
             Model model = new Model(new TelnetClient());
-           // model.connect("localhost", 5402);
-            //model.start();
+            vmDash = new VMDashboard(model);
+            model.connect("localhost", 5402);
+            model.start();
+            DataContext = vmDash;
         }
     }
 }

@@ -15,10 +15,11 @@
 
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition />
+            <RowDefinition Height="Auto" />
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <Views:Controlers  Grid.Column="1" Grid.Row="2"></Views:Controlers>
+        <Views:Controlers  Grid.Column="1" Grid.Row="1"></Views:Controlers>
         <Views:Map Grid.Column="0" Grid.Row="1"></Views:Map>
+        <Views:Dashboard Grid.Column="1" Grid.Row="0"></Views:Dashboard>
     </Grid>
 </Window>

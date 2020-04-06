@@ -108,7 +108,7 @@ namespace FlightSimulatorApp
                         AirSpeed = double.NaN;
 
                     }
-                    telnetClient.write("get '/instrumentation/gps/indicated-altitude-ft'\n");
+                    telnetClient.write("get /instrumentation/gps/indicated-altitude-ft\n");
                     try
                     {
                         Altitude = double.Parse(telnetClient.read());

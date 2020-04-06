@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModels
 {
-    class VMDashboardv : INotifyPropertyChanged
+    class VMDashboard : INotifyPropertyChanged
     {
         private Model model;
       
@@ -21,7 +21,7 @@ namespace FlightSimulatorApp.ViewModels
         public double VM_altimeter { get { return model.altimeter; } }
       
 
-        public VMDashboardv(Model m)
+        public VMDashboard(Model m)
         {
             this.model = m;
             model.PropertyChanged +=
