@@ -23,15 +23,18 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class MainWindow : Window
     {
+        VMControlers vmC;
         VMDashboard vmDash;
+
         public MainWindow()
         {
             InitializeComponent();
             Model model = new Model(new TelnetClient());
             vmDash = new VMDashboard(model);
+            vmC = new VMControlers(model);
             model.connect("localhost", 5402);
             model.start();
-            DataContext = vmDash;
+            //DataContext = vmC;    
         }
     }
 }

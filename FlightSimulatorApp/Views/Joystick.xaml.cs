@@ -21,6 +21,22 @@ namespace FlightSimulatorApp.Views
     public partial class Joystick : UserControl
     {
         private Point startPoint = new Point();
+        public static readonly DependencyProperty RudderProperty = DependencyProperty.Register("Rudder", 
+            typeof(double), typeof(Joystick));
+        public static readonly DependencyProperty ElevatorProperty = DependencyProperty.Register("Elevator",
+            typeof(double), typeof(Joystick));
+       
+        public double Rudder
+        {
+            get { return (double)GetValue(RudderProperty); }
+            set { SetValue(RudderProperty, value); }
+        }
+        
+        public double Elevator
+        {
+            get { return (double)GetValue(ElevatorProperty); }
+            set { SetValue(ElevatorProperty, value); }
+        }
 
         public Joystick()
         {
@@ -33,7 +49,7 @@ namespace FlightSimulatorApp.Views
             {
                 double x = e.GetPosition(this).X - startPoint.X;
                 double y = e.GetPosition(this).Y - startPoint.Y;
-                if (Math.Sqrt(x * x + y * y) <= Base.Width / 2 - KnobBase.Width / 2)
+                if (Math.Sqrt(x * x + y * y) < Base.Width / 2)
                 {
                     knobPosition.X = x;
                     knobPosition.Y = y;
@@ -41,8 +57,6 @@ namespace FlightSimulatorApp.Views
                 }
             }
         }
-
-
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {

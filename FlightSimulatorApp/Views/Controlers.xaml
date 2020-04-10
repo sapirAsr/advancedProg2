@@ -10,14 +10,16 @@
     <Grid Margin="10,25,0,0">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="174*"/>
+            <ColumnDefinition Width="221*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="2*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Joystick Grid.Column="1" Grid.Row="0"></local:Joystick>
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal">
+        <local:Joystick Grid.Column="1" Grid.Row="0" Rudder="{Binding VM_Rudder, Mode=OneWayToSource}"
+                        Elevator="{Binding VM_Elevator, Mode=OneWayToSource}" Loaded="Joystick_Loaded_1" Grid.ColumnSpan="2" Margin="0,0,0,0.333"></local:Joystick>
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,0,0,0.333">
             <Slider x:Name="RectangleHeigh"  Margin="0,29,0,0" 
               Width="97" Orientation="Vertical" VerticalAlignment="Top"
               Value="50" Minimum="0" Maximum="200" 
@@ -28,7 +30,7 @@
                Height="{Binding Value, ElementName=RectangleHeight}" 
                Width="{Binding Value, ElementName=RectangleWidth}"/>
         </StackPanel>
-        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal">
+        <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,383,0,-0.333" Grid.RowSpan="2">
             <Slider x:Name="RectangleHeight"  Margin="30,88,295,87" 
               Width="414" Orientation="Horizontal" HorizontalAlignment="Stretch" 
               Value="50" Minimum="0" Maximum="200" 
@@ -39,5 +41,10 @@
                Height="{Binding Value, ElementName=RectangleHeight}" 
                Width="{Binding Value, ElementName=RectangleWidth}"/>
         </StackPanel>
+        <Label Grid.Column="1" Grid.Row="0" Foreground="Black" Grid.ColumnSpan="2" Margin="350,-30,0,333" FontSize=" 20">Rudder</Label>
+        <TextBox Name="rudder" Text="{Binding Path=VM_Rudder, Mode=OneWay}"  Grid.Column="1" Grid.Row="0" Margin="123,150,147,201.333" VerticalAlignment="Center" Height="32"/>
+        <Label Grid.Column="1" Foreground="Black" Grid.ColumnSpan="2" Margin="600,150, 0,0" Grid.RowSpan="2" FontSize=" 20">Elevator</Label>
+        <Label Grid.Column="1" Grid.Row="1" Foreground="Black" Grid.ColumnSpan="2" Margin="100,50,80,0" FontSize=" 20">Aileron</Label>
+        <Label Grid.Column="1" Grid.Row="0" Foreground="Black" Grid.ColumnSpan="2" Margin="30,150,80,0" FontSize=" 20">Throttle</Label>
     </Grid>
 </UserControl>

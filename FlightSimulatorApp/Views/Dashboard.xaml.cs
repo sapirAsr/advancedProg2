@@ -1,4 +1,5 @@
-﻿using System;
+﻿using FlightSimulatorApp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -20,9 +21,12 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class Dashboard : UserControl
     {
+
         public Dashboard()
         {
             InitializeComponent();
+            DataContext = vmDash;
+
         }
     }
 }

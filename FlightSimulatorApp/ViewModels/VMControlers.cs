@@ -11,13 +11,13 @@ namespace FlightSimulatorApp.ViewModels
     {
         private Model model;
         private double rudder;
-        public double VM_Rudder{ get { return rudder;}  set { rudder = value; model.SetRudder(value); } }
+        public double VM_Rudder{ set { rudder = value; model.SetRudder(value); } }
         private double aileron;
         public double VM_Aileron { get { return aileron; } set { aileron = value; model.SetAileron(value); } }
         private double throttle;
         public double VM_Throttle { get { return throttle;  } set { throttle = value; model.SetThrottle(value); } }
         private double elevator;
-        public double VM_Elevator { get { return elevator; } set { elevator = value; model.SetElevator(value); } }
+        public double VM_Elevator { set { elevator = value; model.SetElevator(value); } }
         public VMControlers(Model m)
         {
             this.model = m;

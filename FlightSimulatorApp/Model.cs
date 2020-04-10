@@ -68,17 +68,18 @@ namespace FlightSimulatorApp
         {
             new Thread(delegate ()
             {
+
                 while (!stop)
                 {
                     //controlers joystick
-                    telnetClient.write("get /controls/engines/current-engine/throttle\n");
+                    /**telnetClient.write("get /controls/engines/current-engine/throttle\n");
                     Throttle = double.Parse(telnetClient.read());
                     telnetClient.write("get /controls/flight/aileron\n");
                     Aileron = double.Parse(telnetClient.read());
                     telnetClient.write("get /controls/flight/elevator\n");
                     Elevator = double.Parse(telnetClient.read());
                     telnetClient.write("get /controls/flight/rudder\n");
-                    Rudder = double.Parse(telnetClient.read());
+                    Rudder = double.Parse(telnetClient.read());**/
                     //dashboard
                     telnetClient.write("get /position/latitude-deg\n");
                     try 
@@ -100,7 +101,8 @@ namespace FlightSimulatorApp
                     telnetClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
                     try
                     {
-                        AirSpeed = double.Parse(telnetClient.read());
+                        telnetClient.write(AirSpeed.ToString());
+                        AirSpeed = Convert.ToDouble(telnetClient.read());
 
                     }
                     catch (Exception)
