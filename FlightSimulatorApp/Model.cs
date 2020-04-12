@@ -13,6 +13,7 @@ namespace FlightSimulatorApp
         ITelnetClient telnetClient;
         public event PropertyChangedEventHandler PropertyChanged;
         volatile Boolean stop;
+        bool b = true;
         //controlers
         private string throttle;
         private string aileron;
