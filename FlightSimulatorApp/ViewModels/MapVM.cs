@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModels
 {
-    class MapVM
+    public class MapVM
     {
-        private Model model;
-        public double VM_Longitude { get { return model.Longitude; } }
-        public double VM_Latitude { get { return model.Latitude; } }
+        public Model model;
+        public string VM_Longitude { get { return model.Longitude; } }
+        public string VM_Latitude { get { return model.Latitude; } }
 
-        public Location VM_Location { get { return new Location(model.Latitude, model.Longitude); } }
+        public Location VM_Location { get { return new Location(Double.Parse(model.Latitude), Double.Parse(model.Longitude)); } }
        
         public MapVM(Model m)
         {

@@ -11,13 +11,5 @@ namespace FlightSimulatorApp
         void connect(string ip, int port);
         void disconnect();
         void start();
-
-        //controlers properties
-        double Throttle { set; get; }
-        double Aileron { set; get; }
-        double Elevator { set; get; }
-        double Rudder { set; get; }
-
-
     }
 }

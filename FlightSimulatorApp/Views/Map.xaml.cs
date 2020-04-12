@@ -1,4 +1,5 @@
-﻿using Microsoft.Maps.MapControl.WPF;
+﻿using FlightSimulatorApp.ViewModels;
+using Microsoft.Maps.MapControl.WPF;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -24,6 +25,7 @@ namespace FlightSimulatorApp.Views
         public Map()
         {
             InitializeComponent();
+            DataContext = (Application.Current as App).MapVm;
         }
 
     }

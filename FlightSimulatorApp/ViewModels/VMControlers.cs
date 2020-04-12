@@ -7,17 +7,17 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModels
 {
-    class VMControlers : INotifyPropertyChanged
+    public class VMControlers : INotifyPropertyChanged
     {
-        private Model model;
-        private double rudder;
-        public double VM_Rudder{ set { rudder = value; model.SetRudder(value); } }
-        private double aileron;
-        public double VM_Aileron { set { aileron = value; model.SetAileron(value); } }
-        private double throttle;
-        public double VM_Throttle { set { throttle = value; model.SetThrottle(value); } }
-        private double elevator;
-        public double VM_Elevator { set { elevator = value; model.SetElevator(value); } }
+        public Model model;
+        private string rudder;
+        public string VM_Rudder{ set { rudder = value; model.SetRudder(value); } }
+        private string aileron;
+        public string VM_Aileron { set { aileron = value; model.SetAileron(value); } }
+        private string throttle;
+        public string VM_Throttle { set { throttle = value; model.SetThrottle(value); } }
+        private string elevator;
+        public string VM_Elevator { set { elevator = value; model.SetElevator(value); } }
         public VMControlers(Model m)
         {
             this.model = m;
@@ -26,14 +26,11 @@ namespace FlightSimulatorApp.ViewModels
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
                 };
-
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName) {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
         }
-
     }
 }

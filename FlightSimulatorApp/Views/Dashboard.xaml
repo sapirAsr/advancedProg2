@@ -35,13 +35,13 @@
         <Label Grid.Column="0" Grid.Row="7" Foreground="Black">Roll</Label>
         <Label Grid.Column="0" Grid.Row="8" Foreground="Black">Pitch</Label>
         <Label Grid.Column="0" Grid.Row="9" Foreground="Black" >Altimeter</Label>
-        <TextBox Name="heading" Text="{Binding Path=VM_heading, Mode=OneWay}"  Grid.Column="1" Grid.Row="2"></TextBox>
-        <TextBox Name="verticalSpeed" Text="{Binding Path=VM_verticalSpeed, Mode=OneWay}" Grid.Column="1" Grid.Row="3"></TextBox>
-        <TextBox Name="groundSpeed" Text="{Binding Path=VM_groundSpeed, Mode=OneWay}" Grid.Column="1" Grid.Row="4"></TextBox>
-        <TextBox Name="airspeed" Text="{Binding Path=VM_airspeed, Mode=OneWay}" Grid.Column="1" Grid.Row="5"></TextBox>
-        <TextBox Name="altitude" Text="{Binding Path=VM_altitude, Mode=OneWay}" Grid.Column="1" Grid.Row="6"></TextBox>
-        <TextBox Name="roll" Text="{Binding Path=VM_roll, Mode=OneWay}" Grid.Column="1" Grid.Row="7"></TextBox>
-        <TextBox Name="pitch" Text="{Binding Path=VM_pitch, Mode=OneWay}" Grid.Column="1" Grid.Row="8"></TextBox>
-        <TextBox Name="altimeter" Text="{Binding Path=VM_altimeter, Mode=OneWay}" Grid.Column="1" Grid.Row="9"></TextBox>
+        <TextBox Name="heading" Text="{Binding VM_Heading, Mode=OneWay, StringFormat=N3}"  Grid.Column="1" Grid.Row="2"></TextBox>
+        <TextBox Name="verticalSpeed" Text="{Binding VM_VerticalSpeed, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="3"></TextBox>
+        <TextBox Name="groundSpeed" Text="{Binding VM_GroundSpeed, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="4"></TextBox>
+        <TextBox Name="airspeed" Text="{Binding VM_Airspeed, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="5"></TextBox>
+        <TextBox Name="altitude" Text="{Binding VM_Altitude, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="6"></TextBox>
+        <TextBox Name="roll" Text="{Binding VM_Roll, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="7"></TextBox>
+        <TextBox Name="pitch" Text="{Binding VM_Pitch, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="8"></TextBox>
+        <TextBox Name="altimeter" Text="{Binding VM_Altimeter, Mode=OneWay, StringFormat=N3}" Grid.Column="1" Grid.Row="9"></TextBox>
     </Grid>
 </UserControl>

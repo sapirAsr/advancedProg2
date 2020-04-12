@@ -8,51 +8,51 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp
 {
-    class Model : IModel
+    public class Model : IModel
     {
         ITelnetClient telnetClient;
         public event PropertyChangedEventHandler PropertyChanged;
         volatile Boolean stop;
         //controlers
-        private double throttle;
-        private double aileron ;
-        private double elevator;
-        private double rudder;
+        private string throttle;
+        private string aileron;
+        private string elevator;
+        private string rudder;
         //dashboard
-        private double latitude;
-        private double longitude;
-        private double airSpeed;
-        private double altitude;
-        private double roll;
-        private double pitch;
-        private double altimeter;
-        private double heading;
-        private double groundSpeed;
-        private double verticalSpeed;
+        private string latitude;
+        private string longitude;
+        private string airSpeed;
+        private string altitude;
+        private string roll;
+        private string pitch;
+        private string altimeter;
+        private string heading;
+        private string groundSpeed;
+        private string verticalSpeed;
 
-        public Model(ITelnetClient telnetClient) {
+        public Model(ITelnetClient telnetClient)
+        {
             this.telnetClient = telnetClient;
-            stop = false; 
+            stop = false;
         }
 
         //controlers properties
-        public double Throttle { get { return throttle; } set { throttle = value; NotifyPropertyChanged("throttle"); } }
-        public double Aileron { get { return aileron; } set { aileron = value; NotifyPropertyChanged("aileron"); } }
-     
-        public double Elevator { get { return elevator; } set { elevator = value; NotifyPropertyChanged("elevator"); } }
-        public double Rudder { get { return rudder; } set { rudder = value; NotifyPropertyChanged("rudder"); } }
+        public string Throttle { get { return throttle; } set { throttle = value; NotifyPropertyChanged("Throttle"); } }
+        public string Aileron { get { return aileron; } set { aileron = value; NotifyPropertyChanged("Aileron"); } }
+        public string Elevator { get { return elevator; } set { elevator = value; NotifyPropertyChanged("Elevator"); } }
+        public string Rudder { get { return rudder; } set { rudder = value; NotifyPropertyChanged("Rudder"); } }
 
         //dashboard properties
-        public double Latitude { get { return latitude; } set { latitude = value; NotifyPropertyChanged("latitude"); } }
-        public double Longitude { get { return longitude; } set { longitude = value; NotifyPropertyChanged("longitude"); } }
-        public double AirSpeed { get { return airSpeed; } set { airSpeed = value; NotifyPropertyChanged("airSpeed"); } }
-        public double Altitude { get { return altitude; } set { altitude = value; NotifyPropertyChanged("altitude"); } }
-        public double Roll { get { return roll; } set { roll = value; NotifyPropertyChanged("roll"); } }
-        public double Pitch { get { return pitch; } set { pitch = value; NotifyPropertyChanged("pitch"); } }
-        public double Altimeter { get { return altimeter; } set { altimeter = value; NotifyPropertyChanged("altimeter"); } }
-        public double Heading { get { return heading; } set { heading = value; NotifyPropertyChanged("heading"); } }
-        public double GroundSpeed { get { return groundSpeed; } set { groundSpeed = value; NotifyPropertyChanged("groundSpeed"); } }
-        public double VerticalSpeed {  get { return verticalSpeed; } set { verticalSpeed = value; NotifyPropertyChanged("verticalSpeed"); } }
+        public string Latitude { get { return latitude; } set { latitude = value; NotifyPropertyChanged("Latitude"); } }
+        public string Longitude { get { return longitude; } set { longitude = value; NotifyPropertyChanged("Longitude"); } }
+        public string AirSpeed { get { return airSpeed; } set { airSpeed = value; NotifyPropertyChanged("AirSpeed"); } }
+        public string Altitude { get { return altitude; } set { altitude = value; NotifyPropertyChanged("Altitude"); } }
+        public string Roll { get { return roll; } set { roll = value; NotifyPropertyChanged("Roll"); } }
+        public string Pitch { get { return pitch; } set { pitch = value; NotifyPropertyChanged("Pitch"); } }
+        public string Altimeter { get { return altimeter; } set { altimeter = value; NotifyPropertyChanged("Altimeter"); } }
+        public string Heading { get { return heading; } set { heading = value; NotifyPropertyChanged("Heading"); } }
+        public string GroundSpeed { get { return groundSpeed; } set { groundSpeed = value; NotifyPropertyChanged("GroundSpeed"); } }
+        public string VerticalSpeed { get { return verticalSpeed; } set { verticalSpeed = value; NotifyPropertyChanged("VerticalSpeed"); } }
         public void connect(string ip, int port)
         {
             telnetClient.connect(ip, port);
@@ -81,120 +81,52 @@ namespace FlightSimulatorApp
                     Rudder = double.Parse(telnetClient.read());**/
                     //dashboard
                     telnetClient.write("get /position/latitude-deg\n");
-                    try 
-                    {
-                        latitude = double.Parse(telnetClient.read());
-                    } catch (Exception)
-                    {
-                        latitude = double.NaN;
-                    }
+                    Latitude = telnetClient.read();
+                    Console.WriteLine(Latitude);
                     telnetClient.write("get /position/longitude-deg\n");
-                    try
-                    {
-                        longitude = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        longitude = double.NaN;
-                    }
+                    Longitude = telnetClient.read();
                     telnetClient.write("get /instrumentation/airspeed-indicator/indicated-speed-kt\n");
-                    try
-                    {
-                        telnetClient.write(AirSpeed.ToString());
-                        airSpeed = Convert.ToDouble(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        airSpeed = double.NaN;
-                    }
+                    AirSpeed = telnetClient.read();
                     telnetClient.write("get /instrumentation/gps/indicated-altitude-ft\n");
-                    try
-                    {
-                        altitude = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        altitude = double.NaN;
-                    }
+                    Altitude = telnetClient.read();
                     telnetClient.write("get /instrumentation/attitude-indicator/internal-roll-deg\n");
-                    try
-                    {
-                        roll = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        roll = double.NaN;
-                    }
+                    Roll = telnetClient.read();
                     telnetClient.write("get /instrumentation/attitude-indicator/internal-pitch-deg\n");
-                    try
-                    {
-                        pitch = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        pitch = double.NaN;
-                    }
+                    Pitch = telnetClient.read();
                     telnetClient.write("get /instrumentation/altimeter/indicated-altitude-ft\n");
-                    try
-                    {
-                        altimeter = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        altimeter = double.NaN;
-                    }
+                    Altimeter = telnetClient.read();
                     telnetClient.write("get /instrumentation/heading-indicator/indicated-heading-deg\n");
-                    try
-                    {
-                        heading = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        heading = double.NaN;
-                    }
+                    Heading = telnetClient.read();
                     telnetClient.write("get /instrumentation/gps/indicated-ground-speed-kt\n");
-                    try
-                    {
-                        groundSpeed = double.Parse(telnetClient.read());
-                    }
-                    catch
-                    {
-                        groundSpeed = double.NaN;
-                    }
+                    GroundSpeed = telnetClient.read();
                     telnetClient.write("get /instrumentation/gps/indicated-vertical-speed\n");
-                    try
-                    {
-                        verticalSpeed = double.Parse(telnetClient.read());
-                    }
-                    catch (Exception)
-                    {
-                        verticalSpeed = double.NaN;
-                    }
+                    VerticalSpeed = telnetClient.read();
                     Thread.Sleep(250);// read the data in 4Hz
                 }
             }).Start();
         }
 
-        public void NotifyPropertyChanged(string propName) {
+        public void NotifyPropertyChanged(string propName)
+        {
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
         }
 
-        public void SetAileron(double number)
+        public void SetAileron(string number)
         {
             telnetClient.write("set /controls/flight/aileron " + number + "\n");
         }
 
-        public void SetThrottle(double number)
+        public void SetThrottle(string number)
         {
             telnetClient.write("set /controls/engines/current-engine/throttle " + number + "\n");
         }
 
-        public void SetElevator(double number)
+        public void SetElevator(string number)
         {
             telnetClient.write("set /controls/flight/rudder " + number + "\n");
         }
 
-        public void SetRudder(double number)
+        public void SetRudder(string number)
         {
             telnetClient.write("get /controls/flight/rudder " + number + "\n");
         }
