@@ -10,6 +10,7 @@ namespace FlightSimulatorApp.ViewModels
 {
     public class MapVM
     {
+        //
         public Model model;
         public string VM_Longitude { get { return model.Longitude; } }
         public string VM_Latitude { get { return model.Latitude; } }

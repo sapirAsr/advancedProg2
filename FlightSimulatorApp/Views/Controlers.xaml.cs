@@ -22,6 +22,7 @@ namespace FlightSimulatorApp.Views
     {
         public Controlers()
         {
+            //
             InitializeComponent();
             DataContext = (Application.Current as App).VmC;
         }

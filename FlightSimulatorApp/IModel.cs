@@ -8,6 +8,7 @@ namespace FlightSimulatorApp
 {
     interface IModel 
     {
+        //
         void connect(string ip, int port);
         void disconnect();
         void start();

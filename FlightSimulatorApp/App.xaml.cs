@@ -14,6 +14,7 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class App : Application
     {
+        //
         public VMControlers VmC { get; internal set; }
         public VMDashboard VmDash { get; internal set; }
         public MapVM MapVm { get; internal set; }

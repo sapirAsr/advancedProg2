@@ -9,6 +9,7 @@ namespace FlightSimulatorApp.ViewModels
 {
     public class VMControlers : INotifyPropertyChanged
     {
+        //
         public Model model;
         private string rudder;
         public string VM_Rudder{ set { rudder = value; model.SetRudder(value); } }

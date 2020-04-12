@@ -9,6 +9,7 @@ namespace FlightSimulatorApp.ViewModels
 {
     public class VMDashboard : INotifyPropertyChanged
     {
+        //
         public Model model;
         public string VM_Heading { get { return model.Heading; } }
         public string VM_VerticalSpeed { get { return model.VerticalSpeed; } }
