@@ -38,17 +38,22 @@ namespace FlightSimulatorApp.Views
             set { SetValue(ElevatorProperty, value); }
         }
 
+        private double x;
+        private double y;
+
         public Joystick()
         {
             InitializeComponent();
         }
 
+        
+
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
             if (e.LeftButton == MouseButtonState.Pressed)
             {
-                double x = e.GetPosition(this).X - startPoint.X;
-                double y = e.GetPosition(this).Y - startPoint.Y;
+                x = e.GetPosition(this).X - startPoint.X;
+                y = e.GetPosition(this).Y - startPoint.Y;
                 if (Math.Sqrt(x * x + y * y) < Base.Width / 2)
                 {
                     knobPosition.X = x;

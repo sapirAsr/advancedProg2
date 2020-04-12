@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Maps.MapControl.WPF;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -7,21 +8,15 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModels
 {
-    class VMDashboard : INotifyPropertyChanged
+    class MapVM
     {
         private Model model;
-      
-        public double VM_Heading { get { return model.Heading; } }
-        public double VM_VerticalSpeed { get { return model.VerticalSpeed; } }
-        public double VM_GroundSpeed { get { return model.GroundSpeed; } }
-        public double VM_AirSpeed {  get { return model.AirSpeed; } }
-        public double VM_Altitude {  get { return model.Altitude; } }
-        public double VM_Roll { get { return model.Roll; } }
-        public double VM_Pitch { get { return model.Pitch; } }
-        public double VM_Altimeter { get { return model.Altimeter; } }
-      
+        public double VM_Longitude { get { return model.Longitude; } }
+        public double VM_Latitude { get { return model.Latitude; } }
 
-        public VMDashboard(Model m)
+        public Location VM_Location { get { return new Location(model.Latitude, model.Longitude); } }
+       
+        public MapVM(Model m)
         {
             this.model = m;
             model.PropertyChanged +=
@@ -38,5 +33,6 @@ namespace FlightSimulatorApp.ViewModels
             this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
 
         }
+
     }
 }

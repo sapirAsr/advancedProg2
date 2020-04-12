@@ -5,9 +5,9 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="800">
+             d:DesignHeight="600" d:DesignWidth="700">
 
-    <Grid Margin="10,25,0,0">
+    <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition Width="174*"/>
@@ -18,7 +18,7 @@
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
         <local:Joystick Grid.Column="1" Grid.Row="0" Rudder="{Binding VM_Rudder, Mode=OneWayToSource}"
-                        Elevator="{Binding VM_Elevator, Mode=OneWayToSource}" Loaded="Joystick_Loaded_1" Grid.ColumnSpan="2" Margin="0,0,0,0.333"></local:Joystick>
+                        Elevator="{Binding VM_Elevator, Mode=OneWayToSource}" Grid.ColumnSpan="2" Margin="0,0,0,0.333"></local:Joystick>
         <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,0,0,0.333">
             <Slider x:Name="RectangleHeigh"  Margin="0,29,0,0" 
               Width="97" Orientation="Vertical" VerticalAlignment="Top"

@@ -13,10 +13,10 @@ namespace FlightSimulatorApp
         void start();
 
         //controlers properties
-        double throttle { set; get; }
-        double aileron { set; get; }
-        double elevator { set; get; }
-        double rudder { set; get; }
+        double Throttle { set; get; }
+        double Aileron { set; get; }
+        double Elevator { set; get; }
+        double Rudder { set; get; }
 
 
     }

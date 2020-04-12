@@ -25,16 +25,18 @@ namespace FlightSimulatorApp
     {
         VMControlers vmC;
         VMDashboard vmDash;
+        MapVM mapvm;
 
         public MainWindow()
         {
             InitializeComponent();
             Model model = new Model(new TelnetClient());
             vmDash = new VMDashboard(model);
-            vmC = new VMControlers(model);
+            //vmC = new VMControlers(model);
+            //mapvm = new MapVM(model);
             model.connect("localhost", 5402);
             model.start();
-            //DataContext = vmC;    
+            DataContext = vmDash;    
         }
     }
 }
