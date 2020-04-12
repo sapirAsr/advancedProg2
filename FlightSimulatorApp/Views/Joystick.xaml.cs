@@ -20,6 +20,7 @@ namespace FlightSimulatorApp.Views
     /// </summary>
     public partial class Joystick : UserControl
     {
+        //
         private Point startPoint = new Point();
         public static readonly DependencyProperty RudderProperty = DependencyProperty.Register("Rudder", 
             typeof(double), typeof(Joystick));

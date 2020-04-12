@@ -8,6 +8,7 @@ namespace FlightSimulatorApp.ViewModels
 {
     class MainWindowVM
     {
+        //
         public Model model;
         public VMControlers vmC;
         public VMDashboard vmDash;

@@ -24,6 +24,7 @@ namespace FlightSimulatorApp.Views
     {
         public Map()
         {
+            //
             InitializeComponent();
             DataContext = (Application.Current as App).MapVm;
         }

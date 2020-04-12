@@ -28,7 +28,7 @@ namespace FlightSimulatorApp
         public MainWindow()
         {
             InitializeComponent();
-            /**
+            /**...
             Model model = new Model(new TelnetClient());
             vmDash = new VMDashboard(model);
             vmC = new VMControlers(model);
