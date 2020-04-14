@@ -7,11 +7,14 @@
              mc:Ignorable="d" 
              d:DesignHeight="150" d:DesignWidth="400">
     <Grid>
-        <Button Click="Button_Click_1" Content="Connect" FontSize="16" Margin="10,100,300,20" Background="LimeGreen"/>
-        <Button Click="Button_Click" Content="Disconnect" FontSize="16" Margin="230,100,100,20" Background="Red"/>
-        <Label Content="Ip" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="2.38,9.602" Margin="5,10,250,100" Height="35" Width="57"/>
-        <Label Content="Port" FontSize="15" HorizontalAlignment="Left" Height="48" Margin="5,55,0,0" VerticalAlignment="Top" Width="49" RenderTransformOrigin="0.531,0.42"/>
+        <Grid.Background>
+            <ImageBrush Stretch="Fill" ImageSource="control power.jpg" AlignmentY="Top" AlignmentX="Center"/>
+        </Grid.Background>
+        <Button Click="Button_Click_1" Content="Connect" FontSize="16" Margin="10,103,385,17" Background="LimeGreen"/>
+        <Button Click="Button_Click" Content="Disconnect" FontSize="16" Margin="259,103,136,17" Background="Red"/>
+        <Label Content="Ip" FontSize="15" HorizontalAlignment="Left" VerticalAlignment="Bottom" RenderTransformOrigin="2.38,9.602" Margin="5,0,0,111" Height="30" Width="37"/>
+        <Label Content="Port" FontSize="15" HorizontalAlignment="Left" Height="27" Margin="0,44,0,0" VerticalAlignment="Top" Width="37" RenderTransformOrigin="0.531,0.42"/>
         <TextBox x:Name="ip_insert" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Enter ip" FontSize="20" VerticalAlignment="Top" Width="119" Margin="66,9,0,0"/>
-        <TextBox x:Name="port_insert" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Enter port" FontSize="20" VerticalAlignment="Top" Width="119" Margin="69,59,0,0" />
+        <TextBox x:Name="port_insert" HorizontalAlignment="Left" Height="30" TextWrapping="Wrap" Text="Enter port" FontSize="20" VerticalAlignment="Top" Width="119" Margin="66,44,0,0" />
     </Grid>
 </UserControl>
