@@ -22,17 +22,17 @@ namespace FlightSimulatorApp.Views
     {
         //
         private Point startPoint = new Point();
-        public static readonly DependencyProperty RudderProperty = DependencyProperty.Register("Rudder", 
+        public static readonly DependencyProperty RudderProperty = DependencyProperty.Register("Rudder",
             typeof(double), typeof(Joystick));
         public static readonly DependencyProperty ElevatorProperty = DependencyProperty.Register("Elevator",
             typeof(double), typeof(Joystick));
-       
+
         public double Rudder
         {
             get { return (double)GetValue(RudderProperty); }
             set { SetValue(RudderProperty, value); }
         }
-        
+
         public double Elevator
         {
             get { return (double)GetValue(ElevatorProperty); }
@@ -47,7 +47,7 @@ namespace FlightSimulatorApp.Views
             InitializeComponent();
         }
 
-        
+
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
@@ -61,6 +61,18 @@ namespace FlightSimulatorApp.Views
                     knobPosition.Y = y;
 
                 }
+
+                double rudder = x / (Base.Width / 2);
+                double elevator = y / (Base.Width / 2);
+
+                if (rudder > 1) { rudder = 1; }
+                else if (rudder < -1) { rudder = -1; }
+
+                if (elevator > 1) { elevator = 1; }
+                else if (elevator < -1) { elevator = -1; }
+
+                Rudder = rudder;
+                Elevator = elevator;
             }
         }
 
@@ -76,7 +88,9 @@ namespace FlightSimulatorApp.Views
         {
             knobPosition.X = 0;
             knobPosition.Y = 0;
+            Rudder = 0;
+            Elevator = 0;
         }
-
+    
     }  
 }

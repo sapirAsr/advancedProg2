@@ -5,46 +5,62 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:FlightSimulatorApp.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="700">
+             d:DesignHeight="500" d:DesignWidth="600">
 
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="0*"/>
-            <ColumnDefinition Width="174*"/>
-            <ColumnDefinition Width="221*"/>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="1.5*"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition Height="2*"/>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <local:Joystick Grid.Column="1" Grid.Row="0" Rudder="{Binding VM_Rudder, Mode=OneWayToSource}"
-                        Elevator="{Binding VM_Elevator, Mode=OneWayToSource}" Grid.ColumnSpan="2" Margin="0,0,0,0.333"></local:Joystick>
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Horizontal" Grid.ColumnSpan="2" Margin="0,0,0,0.333">
-            <Slider x:Name="RectangleHeigh"  Margin="0,29,0,0" 
-              Width="97" Orientation="Vertical" VerticalAlignment="Top"
-              Value="50" Minimum="0" Maximum="200" 
+        <local:Joystick x:Name="joystick" Grid.Column="1" Grid.Row="1" Rudder="{Binding Path=VM_Rudder, Mode=OneWayToSource}"
+                        Elevator="{Binding Path=VM_Elevator, Mode=OneWayToSource}"></local:Joystick>
+        <StackPanel Grid.Column="0" Grid.Row="1" Orientation="Horizontal" Grid.ColumnSpan="3" Margin="0,0,0.001,0">
+            <Slider x:Name="throttleSlider"  Margin="20,29,0,-16.667" 
+              Width="72" Orientation="Vertical" VerticalAlignment="Top"
+               Minimum="0" Maximum="1" Value="{Binding VM_throttle, Mode=OneWayToSource}"
               SmallChange="1" LargeChange="10"
               TickPlacement="BottomRight" TickFrequency="10" RenderTransformOrigin="0.485,7.271" Height="321"/>
-            <Rectangle Fill="Blue" HorizontalAlignment="Left" 
-               Margin="50,20,0,0" 
-               Height="{Binding Value, ElementName=RectangleHeight}" 
-               Width="{Binding Value, ElementName=RectangleWidth}"/>
+
+
+
         </StackPanel>
-        <StackPanel Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,383,0,-0.333" Grid.RowSpan="2">
-            <Slider x:Name="RectangleHeight"  Margin="30,88,295,87" 
-              Width="414" Orientation="Horizontal" HorizontalAlignment="Stretch" 
-              Value="50" Minimum="0" Maximum="200" 
-              SmallChange="1" LargeChange="10"
-              TickPlacement="BottomRight" TickFrequency="10" RenderTransformOrigin="0.485,7.271" Height="25"/>
-            <Rectangle Fill="Blue" HorizontalAlignment="Left" 
-               Margin="50,20,0,0" 
-               Height="{Binding Value, ElementName=RectangleHeight}" 
-               Width="{Binding Value, ElementName=RectangleWidth}"/>
-        </StackPanel>
-        <Label Grid.Column="1" Grid.Row="0" Foreground="Black" Grid.ColumnSpan="2" Margin="350,-30,0,333" FontSize=" 20">Rudder</Label>
-        <TextBox Name="rudder" Text="{Binding Path=VM_Rudder, Mode=OneWay}"  Grid.Column="1" Grid.Row="0" Margin="123,150,147,201.333" VerticalAlignment="Center" Height="32"/>
-        <Label Grid.Column="1" Foreground="Black" Grid.ColumnSpan="2" Margin="600,150, 0,0" Grid.RowSpan="2" FontSize=" 20">Elevator</Label>
-        <Label Grid.Column="1" Grid.Row="1" Foreground="Black" Grid.ColumnSpan="2" Margin="100,50,80,0" FontSize=" 20">Aileron</Label>
-        <Label Grid.Column="1" Grid.Row="0" Foreground="Black" Grid.ColumnSpan="2" Margin="30,150,80,0" FontSize=" 20">Throttle</Label>
+
+        <Label Grid.Column="1" Grid.Row="0" Foreground="Black" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize=" 14" Width="110" Height="45" Margin="126,19,164,7.333">Rudder</Label>
+        <Label Name="rudderVal" Content="{Binding ElementName=joystick, Path=Rudder, Mode=OneWay}"  Grid.Column="1" Grid.Row="0" Margin="225,20,132,17.333" VerticalAlignment="Center" Height="34" RenderTransformOrigin="1.005,-2.482" Background="#FFBA3939"/>
+        <Label Grid.Column="1" Foreground="Black" VerticalContentAlignment="Center" FontSize=" 20" HorizontalAlignment="Right"  RenderTransformOrigin="0.501,0.431" Grid.Row="1" Height="32" Grid.ColumnSpan="2"  Width="91">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-89.606"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform> Elevator
+        </Label>
+        <Label Name="elevatorVal" Content="{Binding ElementName=joystick, Path=Elevator, Mode=OneWay}" Grid.Row="1" VerticalAlignment="Center" Height="49" RenderTransformOrigin="1.005,-2.482" Background="#FF3E7EC4"  Grid.Column="2" Margin="16,71.667,18,236.667"/>
+
+        <Label Grid.Column="1" Grid.Row="2" Foreground="Black" Grid.ColumnSpan="2" FontSize=" 20" Margin="6,0.333,0,39">Aileron</Label>
+        <Label Name="throttleVal" Content="{Binding Path=Value,ElementName=throttleSlider}" Grid.Row="1" VerticalAlignment="Center" Height="54" RenderTransformOrigin="1.005,-2.482" Background="#FFE7FC29"  Grid.Column="0" Margin="47,71.667,13,231.667"/>
+        <Label Grid.Column="0" Grid.Row="1" Foreground="Black" FontSize=" 20" RenderTransformOrigin="0.5,0.5" Height="32" >
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-90.709"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform> Throttle
+        </Label>
+        <Label Name="aileronVal" Content="{Binding Path=Value,ElementName=aileronSlider}" Grid.Row="2" VerticalAlignment="Center" Height="24" RenderTransformOrigin="1.005,-2.482" Background="#FFFCA429"  Grid.Column="1" Margin="100,5.333,249,42"/>
+        <Slider Name="aileronSlider" Minimum="-1" Maximum="1" Grid.Column="1" Value="{Binding VM_aileron, Mode=OneWayToSource}"
+                HorizontalAlignment="Left" Height="25" Margin="9,39.333,0,0" Grid.Row="2" VerticalAlignment="Top" Width="328"/>
+
+
     </Grid>
 </UserControl>

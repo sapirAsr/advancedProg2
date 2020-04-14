@@ -14,18 +14,20 @@ namespace FlightSimulatorApp
     /// </summary>
     public partial class App : Application
     {
-        //
-        public VMControlers VmC { get; internal set; }
-        public VMDashboard VmDash { get; internal set; }
-        public MapVM MapVm { get; internal set; }
+        
+        public VMControlers VmC { get; private set; }
+        public VMDashboard VmDash { get; private set; }
+        public MapVM MapVm { get; private set; }
+
+        public Model model;
         private void Application_Stratup(object sender, StartupEventArgs e)
         {
-            Model model = new Model(new TelnetClient());
+            model = new Model(new TelnetClient());
             VmDash = new VMDashboard(model);
             VmC = new VMControlers(model);
             MapVm = new MapVM(model);
-            model.connect("localhost", 5402);
-            model.start();
+           
         }
+    
     }
 }

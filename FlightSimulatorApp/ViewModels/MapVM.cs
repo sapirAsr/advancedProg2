@@ -8,19 +8,23 @@ using System.Threading.Tasks;
 
 namespace FlightSimulatorApp.ViewModels
 {
-    public class MapVM
+    public class MapVM : INotifyPropertyChanged
     {
         //
-        public Model model;
-        public string VM_Longitude { get { return model.Longitude; } }
-        public string VM_Latitude { get { return model.Latitude; } }
-
-        public Location VM_Location { get { return new Location(Double.Parse(model.Latitude), Double.Parse(model.Longitude)); } }
+        private Model model;
+        public event PropertyChangedEventHandler PropertyChanged;
+        public Location VM_location
+        {
+            get
+            {
+                return model.Location;
+            }
+        }
        
         public MapVM(Model m)
         {
             this.model = m;
-            model.PropertyChanged +=
+            m.PropertyChanged +=
                 delegate (Object sender, PropertyChangedEventArgs e)
                 {
                     NotifyPropertyChanged("VM_" + e.PropertyName);
@@ -28,11 +32,15 @@ namespace FlightSimulatorApp.ViewModels
 
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
+       
         public void NotifyPropertyChanged(string propName)
         {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
-
+            if (this.PropertyChanged != null)
+            {
+                Console.WriteLine("***mapVM************");
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
+            }
+            
         }
 
     }

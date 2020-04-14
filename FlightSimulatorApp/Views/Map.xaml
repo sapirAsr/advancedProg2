@@ -11,7 +11,7 @@
     <Grid>
         <m:Map x:Name="myMap" CredentialsProvider="L4Ij7gJ5tVy3KZwd2O3R~kkSrXyQ4qyRNLq5xK6kNuw~AplTzx7RPEjqVmNszqtfxQUyEmlvVJTAc2wIswGoSbd_Rx69f_fVpmYMnITAy8fW"
                Center="32.0055, 34.8854" ZoomLevel="12">
-            <m:Pushpin Location="{Binding Path=VM_Location, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
+            <m:Pushpin Location="{Binding Path=VM_location, UpdateSourceTrigger=PropertyChanged, Mode=OneWay}">
                 <m:Pushpin.Background>
                     <ImageBrush ImageSource="airplane.png"/>
                 </m:Pushpin.Background>

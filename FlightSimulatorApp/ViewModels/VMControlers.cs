@@ -12,13 +12,15 @@ namespace FlightSimulatorApp.ViewModels
         //
         public Model model;
         private string rudder;
-        public string VM_Rudder{ set { rudder = value; model.SetRudder(value); } }
         private string aileron;
-        public string VM_Aileron { set { aileron = value; model.SetAileron(value); } }
         private string throttle;
-        public string VM_Throttle { set { throttle = value; model.SetThrottle(value); } }
         private string elevator;
+        public string VM_Rudder{ set { rudder = value; model.SetRudder(value); } }
+        public string VM_aileron { set { aileron = value; model.SetAileron(value); } }
+        public string VM_throttle { set { throttle = value; model.SetThrottle(value); } }
         public string VM_Elevator { set { elevator = value; model.SetElevator(value); } }
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public VMControlers(Model m)
         {
             this.model = m;
@@ -29,9 +31,9 @@ namespace FlightSimulatorApp.ViewModels
                 };
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
         public void NotifyPropertyChanged(string propName) {
-            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propName));
+            if (this.PropertyChanged != null)
+                this.PropertyChanged(this, new PropertyChangedEventArgs(propName));
         }
     }
 }
