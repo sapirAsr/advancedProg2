@@ -51,6 +51,7 @@ namespace FlightSimulatorApp.Views
 
         private void Knob_MouseMove(object sender, MouseEventArgs e)
         {
+            
             if (e.LeftButton == MouseButtonState.Pressed)
             {
                 x = e.GetPosition(this).X - startPoint.X;
@@ -78,6 +79,9 @@ namespace FlightSimulatorApp.Views
 
         private void Knob_MouseDown(object sender, MouseButtonEventArgs e)
         {
+            UIElement joystick = (UIElement)sender;
+            joystick.CaptureMouse();
+            
             if (e.ChangedButton == MouseButton.Left)
             {
                 startPoint = e.GetPosition(this);
@@ -86,6 +90,9 @@ namespace FlightSimulatorApp.Views
 
         private void Knob_MouseUp(object sender, MouseButtonEventArgs e)
         {
+            UIElement joystick = (UIElement)sender;
+            joystick.ReleaseMouseCapture();
+            // Mouse.Capture(null);
             knobPosition.X = 0;
             knobPosition.Y = 0;
             Rudder = 0;
